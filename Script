@@ -1,0 +1,78 @@
+-- credits to Nemari#2336
+wait(3)
+local Errormessage = "???"
+local Username = game.Players.LocalPlayer.Name
+local plr = game.Players.LocalPlayer
+-- functions
+function esp()
+	local e = Instance.new("BillboardGui")
+	local e2 = Instance.new("TextLabel")
+	local e3 = Instance.new("Highlight")
+	e3.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+	e3.FillTransparency = 0.7
+	e2.Parent = e
+	e2.BackgroundTransparency = 1
+	e2.TextScaled = true
+	e2.RichText = false
+	e2.Visible = true
+	e.Enabled = true
+	e.AlwaysOnTop = true
+	e2.Name = "plrname"
+	e2.Size = UDim2.fromScale(1, 1)
+	e.Size = UDim2.fromScale(4, 2)
+	e2.TextColor3 = Color3.new(0.65098, 0, 0)
+	e2.Font = Enum.Font.SciFi
+	for i,v in ipairs(game.Players:GetChildren()) do
+		if v.Name ~= Username then
+			local clone = e:Clone()
+			e.Parent = v.Character:FindFirstChild("HumanoidRootPart")
+			e.plrname.Text = v.Name
+			e3:Clone().Parent = v.Character
+		end
+	end
+
+end
+
+game.Players.PlayerAdded:Connect(function(plr()
+	local v = plr
+	local e = Instance.new("BillboardGui")
+	local e2 = Instance.new("TextLabel")
+	local e3 = Instance.new("Highlight")
+	e3.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+	e3.FillTransparency = 0.7
+	e2.Parent = e
+	e2.BackgroundTransparency = 1
+	e2.TextScaled = true
+	e2.RichText = false
+	e2.Visible = true
+	e.Enabled = true
+	e.AlwaysOnTop = true
+	e2.Name = "plrname"
+	e2.Size = UDim2.fromScale(1, 1)
+	e.Size = UDim2.fromScale(4, 2)
+	e2.TextColor3 = Color3.new(0.65098, 0, 0)
+	e2.Font = Enum.Font.SciFi
+    e2.Text = plr.Name
+	local clone = e:Clone()
+	e.Parent = v.Character:FindFirstChild("HumanoidRootPart")
+	e.plrname.Text = v.Name
+	e3:Clone().Parent = v.Character
+end)
+
+--code
+local success, Errormessage = pcall(function()
+	plr.Character.Humanoid.WalkSpeed = 30
+	game.lighting.ClockTime = 12
+	game.lighting.GlobalShadows = false
+    for i,v in ipairs(game.Players:GetChildren()) do
+		for i=1, i do
+			esp()
+		end
+	end
+end)
+-- Check Error
+while not success do --2
+	warn("typo or error. Error info: "..Errormessage)
+	break
+
+end
